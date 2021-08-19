@@ -5,8 +5,8 @@
 //  Created by 태로고침 on 2021/08/19.
 //
 
-import Foundation
+import Combine
 
 protocol StockRepository {
-    var apiKey: String { get set }
+    func fetchStocksPublisher(keywords: String) -> AnyPublisher<StockResult, Error>
 }
