@@ -20,15 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: - Window 객체 생성
         
         window = UIWindow(windowScene: scene)
+        let coordinator = AppDependency.resolve().coordinator
+        if let window = window {
+            coordinator.start(window: window, rootViewController: StockListViewController())
+        }
         
         // Root VC 설정
-        let rootViewController = StockListViewController()
         
-        if let window = window {
-            let rootViewController = UINavigationController(rootViewController: rootViewController)
-            window.rootViewController = rootViewController
-            window.makeKeyAndVisible()
-        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

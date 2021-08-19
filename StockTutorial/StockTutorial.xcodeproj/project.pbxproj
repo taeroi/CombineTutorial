@@ -18,6 +18,8 @@
 		64B45C6E26CE9EA1001370B5 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C6D26CE9EA1001370B5 /* StockListViewController.swift */; };
 		64B45C7026CE9EBE001370B5 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C6F26CE9EBE001370B5 /* BaseView.swift */; };
 		64B45C7226CE9F06001370B5 /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7126CE9F06001370B5 /* StockListView.swift */; };
+		64B45C7426CEA2DF001370B5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7326CEA2DF001370B5 /* Coordinator.swift */; };
+		64B45C7626CEA34F001370B5 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7526CEA34F001370B5 /* CompositionRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		64B45C6D26CE9EA1001370B5 /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
 		64B45C6F26CE9EBE001370B5 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		64B45C7126CE9F06001370B5 /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
+		64B45C7326CEA2DF001370B5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		64B45C7526CEA34F001370B5 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 		64B45C6926CE9E03001370B5 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				64B45C7326CEA2DF001370B5 /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 		64B45C6A26CE9E0A001370B5 /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				64B45C7526CEA34F001370B5 /* CompositionRoot.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -331,12 +337,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B45C7426CEA2DF001370B5 /* Coordinator.swift in Sources */,
 				64B45C6C26CE9E32001370B5 /* BaseViewController.swift in Sources */,
 				64B45C7226CE9F06001370B5 /* StockListView.swift in Sources */,
 				64B45C3026CE9C65001370B5 /* AppDelegate.swift in Sources */,
 				64B45C6E26CE9EA1001370B5 /* StockListViewController.swift in Sources */,
 				64B45C7026CE9EBE001370B5 /* BaseView.swift in Sources */,
 				64B45C3A26CE9C65001370B5 /* StockTutorial.xcdatamodeld in Sources */,
+				64B45C7626CEA34F001370B5 /* CompositionRoot.swift in Sources */,
 				64B45C3226CE9C65001370B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
