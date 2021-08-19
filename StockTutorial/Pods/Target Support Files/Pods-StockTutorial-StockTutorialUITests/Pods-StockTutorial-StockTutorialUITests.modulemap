@@ -1,0 +1,6 @@
+framework module Pods_StockTutorial_StockTutorialUITests {
+  umbrella header "Pods-StockTutorial-StockTutorialUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
