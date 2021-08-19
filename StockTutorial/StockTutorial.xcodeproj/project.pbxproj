@@ -158,8 +158,6 @@
 		64B45C6426CE9DB2001370B5 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				64B45C6B26CE9E32001370B5 /* BaseViewController.swift */,
-				64B45C6D26CE9EA1001370B5 /* StockListViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -184,6 +182,8 @@
 		64B45C6826CE9DFC001370B5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				64B45C6B26CE9E32001370B5 /* BaseViewController.swift */,
+				64B45C6D26CE9EA1001370B5 /* StockListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
