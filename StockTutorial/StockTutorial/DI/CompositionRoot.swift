@@ -6,13 +6,13 @@
 //
 
 struct AppDependency {
-    let coordinator: Coordinator
+    let mainCoordinator: MainCoordinator
 }
 
 extension AppDependency {
     static func resolve() -> AppDependency {
-        let coordinator: Coordinator = .init()
-        
-        return .init(coordinator: coordinator)
+        let mainCoordinator: MainCoordinator = .init()
+
+        return .init(mainCoordinator: mainCoordinator)
     }
 }

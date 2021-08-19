@@ -15,6 +15,13 @@ class StockListView: BaseView {
         return view
     }()
     
+    let searchViewController: UISearchController = {
+        let view = UISearchController(searchResultsController: nil)
+        view.searchBar.placeholder = "회사명을 입력해주세요"
+        view.obscuresBackgroundDuringPresentation = false
+        return view
+    }()
+    
     override func setupViews() {
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

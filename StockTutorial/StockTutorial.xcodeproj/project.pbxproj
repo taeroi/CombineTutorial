@@ -20,6 +20,7 @@
 		64B45C7226CE9F06001370B5 /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7126CE9F06001370B5 /* StockListView.swift */; };
 		64B45C7426CEA2DF001370B5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7326CEA2DF001370B5 /* Coordinator.swift */; };
 		64B45C7626CEA34F001370B5 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7526CEA34F001370B5 /* CompositionRoot.swift */; };
+		64B45C7926CEA655001370B5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7826CEA655001370B5 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		64B45C7126CE9F06001370B5 /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		64B45C7326CEA2DF001370B5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		64B45C7526CEA34F001370B5 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		64B45C7826CEA655001370B5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,7 @@
 			children = (
 				64B45C2F26CE9C65001370B5 /* AppDelegate.swift */,
 				64B45C3126CE9C65001370B5 /* SceneDelegate.swift */,
-				64B45C6626CE9DB3001370B5 /* Domain */,
+				64B45C7726CEA622001370B5 /* Domain */,
 				64B45C6226CE9D6F001370B5 /* Repository */,
 				64B45C6326CE9D91001370B5 /* Model */,
 				64B45C6426CE9DB2001370B5 /* Component */,
@@ -166,14 +168,6 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		64B45C6626CE9DB3001370B5 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Domain;
-			path = "New Group/New Group/Domain";
-			sourceTree = "<group>";
-		};
 		64B45C6726CE9DF7001370B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				64B45C7326CEA2DF001370B5 /* Coordinator.swift */,
+				64B45C7826CEA655001370B5 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -206,6 +201,13 @@
 				64B45C7526CEA34F001370B5 /* CompositionRoot.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		64B45C7726CEA622001370B5 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +342,7 @@
 				64B45C7426CEA2DF001370B5 /* Coordinator.swift in Sources */,
 				64B45C6C26CE9E32001370B5 /* BaseViewController.swift in Sources */,
 				64B45C7226CE9F06001370B5 /* StockListView.swift in Sources */,
+				64B45C7926CEA655001370B5 /* MainCoordinator.swift in Sources */,
 				64B45C3026CE9C65001370B5 /* AppDelegate.swift in Sources */,
 				64B45C6E26CE9EA1001370B5 /* StockListViewController.swift in Sources */,
 				64B45C7026CE9EBE001370B5 /* BaseView.swift in Sources */,
