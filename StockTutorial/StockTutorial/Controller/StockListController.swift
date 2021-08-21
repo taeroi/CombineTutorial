@@ -30,13 +30,31 @@ class StockListController: BaseViewController, FactoryModule {
     }
     
     
-    //MARK: - Override Methods
+    //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSearchController()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        connectObservers(scrollView: selfView.tableView)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        disconnectObservers()
+    }
+    
+    
+    //MARK: - Override Methods
+
+    override func setupTableView() {
+        selfView.tableView.delegate = self
+        selfView.tableView.dataSource = self
     }
     
     override func setupViews() {
@@ -56,7 +74,6 @@ class StockListController: BaseViewController, FactoryModule {
     }
     
     func bind() {
-        
         selfView.searchViewController.searchBar.rx.text
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] text in
@@ -69,11 +86,12 @@ class StockListController: BaseViewController, FactoryModule {
             debugPrint(message)
         }.store(in: &subscriber)
         
-        viewModel.$stocks.sink { stocks in
-            debugPrint("stocks: ", stocks)
+        viewModel.$stocks.sink { [unowned self] _ in
+            self.selfView.tableView.reloadData()
         }.store(in: &subscriber)
         
-        viewModel.$loading.sink { loading in
+        viewModel.$loading.sink { [unowned self] loading in
+            self.selfView.loadingView.isHidden = !loading
             debugPrint("loading: ", loading)
         }.store(in: &subscriber)
     }
