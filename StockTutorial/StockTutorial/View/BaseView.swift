@@ -13,6 +13,7 @@ class BaseView: UIView {
         super.init(frame: frame)
         
         setupViews()
+        setupTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -22,4 +23,6 @@ class BaseView: UIView {
     func setupViews() {
         backgroundColor = .systemBackground
     }
+    
+    func setupTableView() { }
 }
