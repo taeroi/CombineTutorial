@@ -23,6 +23,22 @@ class StockListViewModel {
     
     var subscriber: Set<AnyCancellable> = .init()
     let usecase: StockUseCase
+
+    
+    init(usecase: StockUseCase) {
+        self.usecase = usecase
+        reduce()
+    }
+    
+    func reduce() {
+        $stocks.sink { [unowned self] stocks in
+            if stocks.count == 0 {
+                self.isEmpty = true
+            } else {
+                self.isEmpty = false
+            }
+        }.store(in: &subscriber)
+    }
     
     func searchQueryChanged(query: String) {
         loading = true
@@ -40,21 +56,4 @@ class StockListViewModel {
         }.store(in: &subscriber)
 
     }
-    
-    init(usecase: StockUseCase) {
-        self.usecase = usecase
-        reduce()
-    }
-    
-    func reduce() {
-        $stocks.sink { [unowned self] stocks in
-            if stocks.count == 0 {
-                self.isEmpty = true
-            } else {
-                self.isEmpty = false
-            }
-        }.store(in: &subscriber)
-    }
-    
-    
 }
