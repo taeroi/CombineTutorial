@@ -80,7 +80,7 @@ class StockRepositoryImpl: StockRepository {
         if let url = URL(string: urlString) {
             return .success(url)
         } else {
-            let error: StockRepositoryError = .badUrl
+            let error: CustomError = .badUrl
             return .failure(error)
         }
     }
@@ -92,7 +92,7 @@ class StockRepositoryImpl: StockRepository {
         if let query = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             return .success(query)
         } else {
-            let error: StockRepositoryError = .encoding
+            let error: CustomError = .encoding
             return .failure(error)
         }
     }
