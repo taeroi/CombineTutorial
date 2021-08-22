@@ -13,7 +13,7 @@ struct TimeSeriesMontlyAdjusted: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case meta = "Meta Data"
-        case series = "Montly Adjusted Time Series"
+        case series = "Monthly Adjusted Time Series"
     }
     
     struct Meta: Decodable {
