@@ -32,6 +32,7 @@
 		64B45C7F26CEAA1A001370B5 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C7E26CEAA1A001370B5 /* Stock.swift */; };
 		64B45C8126CEACCB001370B5 /* StockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C8026CEACCB001370B5 /* StockUseCase.swift */; };
 		64B45C8326CEAD37001370B5 /* StockListViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B45C8226CEAD37001370B5 /* StockListViewModel .swift */; };
+		64D1D24D26D1DFC900D80246 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D24C26D1DFC900D80246 /* EmptyView.swift */; };
 		658686288DD17F1C159B11B9 /* Pods_StockTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA820044561622A6FDBACE3 /* Pods_StockTutorial.framework */; };
 		8E2DDD3571A11A2BDC90F73A /* Pods_StockTutorial_StockTutorialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1C620963F3F5C3929F3ED8 /* Pods_StockTutorial_StockTutorialUITests.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		64B45C7E26CEAA1A001370B5 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		64B45C8026CEACCB001370B5 /* StockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockUseCase.swift; sourceTree = "<group>"; };
 		64B45C8226CEAD37001370B5 /* StockListViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockListViewModel .swift"; sourceTree = "<group>"; };
+		64D1D24C26D1DFC900D80246 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		969FC7D8ACBE24CEEF0EFEF5 /* Pods-StockTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockTutorial.release.xcconfig"; path = "Target Support Files/Pods-StockTutorial/Pods-StockTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		CE05746390AC2710DC9B1777 /* Pods_StockTutorialTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockTutorialTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D267B6F6FD98E69C56F326E5 /* Pods-StockTutorialTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockTutorialTests.debug.xcconfig"; path = "Target Support Files/Pods-StockTutorialTests/Pods-StockTutorialTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				64B45C6F26CE9EBE001370B5 /* BaseView.swift */,
 				64B45C7126CE9F06001370B5 /* StockListView.swift */,
+				64D1D24C26D1DFC900D80246 /* EmptyView.swift */,
 				648E793826D14E760061D485 /* StockCell.swift */,
 			);
 			path = View;
@@ -536,6 +539,7 @@
 				648E793926D14E760061D485 /* StockCell.swift in Sources */,
 				64B45C3A26CE9C65001370B5 /* StockTutorial.xcdatamodeld in Sources */,
 				64B45C7626CEA34F001370B5 /* CompositionRoot.swift in Sources */,
+				64D1D24D26D1DFC900D80246 /* EmptyView.swift in Sources */,
 				64B45C3226CE9C65001370B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

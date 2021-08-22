@@ -18,6 +18,7 @@ class StockListViewModel {
     @Published var stocks: [Stock] = []
     @Published var errorMessage: String?
     @Published var loading = false
+    @Published var isEmpty = false
     var currentStocks: [Stock] = []
     
     var subscriber: Set<AnyCancellable> = .init()
@@ -42,6 +43,17 @@ class StockListViewModel {
     
     init(usecase: StockUseCase) {
         self.usecase = usecase
+        reduce()
+    }
+    
+    func reduce() {
+        $stocks.sink { [unowned self] stocks in
+            if stocks.count == 0 {
+                self.isEmpty = true
+            } else {
+                self.isEmpty = false
+            }
+        }.store(in: &subscriber)
     }
     
     
