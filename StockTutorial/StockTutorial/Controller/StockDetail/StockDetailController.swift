@@ -53,10 +53,9 @@ final class StockDetailController: BaseViewController, FactoryModule {
     }
     
     override func bind() {
-        
         viewModel.$timeSeriresMontlyAdjusted.sink { timeSeriresMontlyAdjusted in
             guard let timeSeriresMontlyAdjusted = timeSeriresMontlyAdjusted else { return }
-            debugPrint("timeSeriresMontlyAdjusted: ", timeSeriresMontlyAdjusted)
+            debugPrint("timeSeriresMontlyAdjusted: ", timeSeriresMontlyAdjusted.monthInfos)
         }.store(in: &subscriber)
         
         viewModel.$errorMessage.sink { errorMessage in

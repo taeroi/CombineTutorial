@@ -20,14 +20,20 @@ class StockDetailViewModel: BaseViewModel {
     }
     
     func viewDidLoad(symbol: String) {
+        loading = true
         usecase.fetchTimeSeriesPublisher(keywords: symbol).sink { [unowned self] completion in
+            loading = false
             switch completion {
             case .failure(let error):
                 self.errorMessage = error.localizedDescription
             case .finished: break
             }
         } receiveValue: { value in
-            self.timeSeriresMontlyAdjusted = value
+            var timeSeriresMontlyAdjusted = value
+            timeSeriresMontlyAdjusted.generateMonthInfos()
+            self.timeSeriresMontlyAdjusted = timeSeriresMontlyAdjusted
         }.store(in: &subscriber)
     }
+    
+   
 }
