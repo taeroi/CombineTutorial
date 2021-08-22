@@ -23,7 +23,9 @@ extension AppDependency {
         }
         
         let stockDetailControllerFactory: (Stock) -> StockDetailController = { stock in
-            return .init(dependency: .init(stock: stock))
+            let usecase : StockDetailUseCase = .init(stockRepository: stockRepository)
+            let viewModel: StockDetailViewModel = .init(usecase: usecase)
+            return .init(dependency: .init(stock: stock, viewModel: viewModel))
             
         }
         
