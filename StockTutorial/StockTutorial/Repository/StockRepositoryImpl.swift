@@ -59,7 +59,8 @@ class StockRepositoryImpl: StockRepository {
         case .failure(let error):
             return Fail(error: error).eraseToAnyPublisher()
         case .success(let url):
-            return URLSession.shared.dataTaskPublisher(for: url).map{ $0.data }
+            return URLSession.shared.dataTaskPublisher(for: url)
+                .map{ $0.data }
                 .decode(type: TimeSeriesMontlyAdjusted.self, decoder: decorder)
                 .receive(on: RunLoop.main).eraseToAnyPublisher()
         }
