@@ -36,7 +36,6 @@ class StockListController: BaseViewController, FactoryModule {
         super.viewDidLoad()
         
         setupSearchController()
-        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +72,7 @@ class StockListController: BaseViewController, FactoryModule {
         selfView.searchViewController.searchResultsUpdater = self
     }
     
-    func bind() {
+    override func bind() {
         selfView.searchViewController.searchBar.rx.text
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] text in

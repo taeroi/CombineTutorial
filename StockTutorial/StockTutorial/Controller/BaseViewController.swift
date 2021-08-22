@@ -30,6 +30,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        bind()
         setupTableView()
     }
     
@@ -39,6 +40,8 @@ class BaseViewController: UIViewController {
     func setupViews() {
         view.backgroundColor = .systemBackground
     }
+    
+    func bind() { }
     
     func setupTableView() { }
     
