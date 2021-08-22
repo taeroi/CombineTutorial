@@ -13,7 +13,7 @@ extension AppDependency {
     
     static func resolve() -> AppDependency {
         
-        let stockRepository: StockRepository = SotckRepositoryImpl()
+        let stockRepository: StockRepository = StockRepositoryImpl()
         
         // for pure dependency
         let stockListControllerFactory: () -> StockListController = {
