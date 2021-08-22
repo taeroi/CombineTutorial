@@ -8,7 +8,7 @@
 import RxSwift
 import Combine
 
-class StockListViewModel {
+class StockListViewModel: BaseViewModel {
     //----- Rx -----
 //    var loading: BehaviorSubject<Bool> = .init(value: false)
 //    var errorMessage: BehaviorSubject<String?> = .init(value: nil)
@@ -21,12 +21,12 @@ class StockListViewModel {
     @Published var isEmpty = false
     var currentStocks: [Stock] = []
     
-    var subscriber: Set<AnyCancellable> = .init()
     let usecase: StockUseCase
 
     
     init(usecase: StockUseCase) {
         self.usecase = usecase
+        super.init()
         reduce()
     }
     
