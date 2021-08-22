@@ -47,11 +47,11 @@ final class StockDetailTopView: BaseView {
         subTitleLabel.text = "bb"
         currentValueTextLabel.text = "cc"
         currentValueValueLabel.text = "dd"
-        investmentLabel.text = "ee"
+        investmentLabel.text = "Investment"
         investmetnValueLabel.text = "ff"
-        gainLabel.text = "gg"
+        gainLabel.text = "Gain"
         gainValueLabel.text = "hhh"
-        annualReturnLabel.text = "ii"
+        annualReturnLabel.text = "Annual Return"
         annualReturnValueLabel.text = "jj"
                 
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
@@ -84,5 +84,12 @@ final class StockDetailTopView: BaseView {
         annualReturnValueLabel.centerYAnchor.constraint(equalTo: annualReturnLabel.centerYAnchor).isActive = true
         annualReturnValueLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
         annualReturnValueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true 
+    }
+    
+    func configureUI(stock: Stock) {
+        titleLabel.text = stock.symbol
+        subTitleLabel.text = stock.name
+        currentValueTextLabel.text = "Stock Value (\(String(describing: stock.currency ?? "")))"
+        
     }
 }

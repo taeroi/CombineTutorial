@@ -11,6 +11,7 @@ class StockDetailViewModel: BaseViewModel {
     @Published var loading = false
     @Published var errorMessage: String?
     @Published var timeSeriresMontlyAdjusted: TimeSeriesMontlyAdjusted?
+    @Published var stock: Stock?
     
     let usecase: StockDetailUseCase
     
@@ -19,8 +20,9 @@ class StockDetailViewModel: BaseViewModel {
         super.init()
     }
     
-    func viewDidLoad(symbol: String) {
+    func viewDidLoad(symbol: String, stock: Stock) {
         loading = true
+        self.stock = stock
         usecase.fetchTimeSeriesPublisher(keywords: symbol).sink { [unowned self] completion in
             loading = false
             switch completion {
