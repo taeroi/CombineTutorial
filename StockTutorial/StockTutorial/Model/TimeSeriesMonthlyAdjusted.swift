@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct TimeSeriesMontlyAdjusted: Decodable {
+struct TimeSeriesMonthlyAdjusted: Decodable {
     let meta: Meta
-    let series: [String: OHLC]
-    var monthInfos: [MonthInfo] = []
+    let timeSeries: [String: OHLC]
+    var series: [MonthInfo] = []
     
     enum CodingKeys: String, CodingKey {
         case meta = "Meta Data"
-        case series = "Monthly Adjusted Time Series"
+        case timeSeries = "Monthly Adjusted Time Series"
     }
     
     struct Meta: Decodable {
@@ -43,7 +43,7 @@ struct TimeSeriesMontlyAdjusted: Decodable {
         
         var monthInfos: [MonthInfo] = []
         
-        let sortedSeries = series.sorted { $0.key > $1.key }
+        let sortedSeries = timeSeries.sorted { $0.key > $1.key }
         sortedSeries.forEach { (dateString, ohlc) in
             if let date = dateFormatter.date(from: dateString),
                let adjustedOpen = generateAdjustedOpen(ohlc: ohlc),
@@ -54,7 +54,7 @@ struct TimeSeriesMontlyAdjusted: Decodable {
                 monthInfos.append(monthInfo)
             }
         }
-        self.monthInfos = monthInfos
+        self.series = monthInfos
     }
     
     private func generateAdjustedOpen(ohlc: OHLC) -> Double? {
