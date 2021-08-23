@@ -28,14 +28,15 @@ extension AppDependency {
             return .init(dependency: .init(stock: stock, viewModel: viewModel))
         }
         
-        let selectDateControllerFactory: () -> SelectDateController = {
-            .init()
+        let dateSelectControllerFactory: (TimeSeriesMonthlyAdjusted, MonthInfo?) -> DateSelectionController = { timeSeriesMonthlyAdjusted, previousMonthInfo in
+            let viewModel: DateSelectionViewModel = .init()
+            return .init(dependency: .init(timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted, viewModel: viewModel, selectedMonthInfo: previousMonthInfo))
         }
         
         let mainCoordinator: MainCoordinator = .init(dependency: .init(
                                                         stockListControllerFactory: stockListControllerFactory,
                                                         stockDetailControllerFactory: stockDetailControllerFactory,
-                                                        selectDateControllerFactory: selectDateControllerFactory))
+                                                        dateSelectionControllerFactory: dateSelectControllerFactory))
 
         return .init(mainCoordinator: mainCoordinator)
     }

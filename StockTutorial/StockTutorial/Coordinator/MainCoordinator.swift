@@ -13,20 +13,21 @@ class MainCoordinator: Coordinator, FactoryModule {
     struct Dependency {
         let stockListControllerFactory: () -> StockListController
         let stockDetailControllerFactory: (Stock) -> StockDetailController
-        let selectDateControllerFactory: () -> SelectDateController
+        let dateSelectionControllerFactory: (TimeSeriesMonthlyAdjusted, MonthInfo?) -> DateSelectionController
     }
     
     var navigationController: UINavigationController?
     
     let rootViewController: StockListController
     let stockDetailControllerFactory: (Stock) -> StockDetailController
-    let selectDateControllerFactory: () -> SelectDateController
-
+    let dateSelectionControllerFactory: (TimeSeriesMonthlyAdjusted, MonthInfo?) -> DateSelectionController
+    
+    var stockDetailControllerRF: StockDetailController?
     
     required init(dependency: Dependency, payload: ()) {
         rootViewController = dependency.stockListControllerFactory()
         stockDetailControllerFactory = dependency.stockDetailControllerFactory
-        selectDateControllerFactory = dependency.selectDateControllerFactory
+        dateSelectionControllerFactory = dependency.dateSelectionControllerFactory
     }
     
     
@@ -36,14 +37,20 @@ class MainCoordinator: Coordinator, FactoryModule {
     }
     
     func stockCellTapped(item: Stock) {
-        let vc = stockDetailControllerFactory(item)
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func dateInputTextFieldTapped() {
-        let controller = selectDateControllerFactory()
+        let controller = stockDetailControllerFactory(item)
+        stockDetailControllerRF = controller
+        controller.coordinator = self
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func dateInputTextFieldTapped(with timeSeriesMonthlyAdjusted: TimeSeriesMonthlyAdjusted, monthInfo: MonthInfo?) {
+        let controller = dateSelectionControllerFactory(timeSeriesMonthlyAdjusted, monthInfo)
+        controller.delegate = stockDetailControllerRF?.viewModel
+        controller.coordinator = self
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func pop() {
+        navigationController?.popViewController(animated: true)
+    }
 }
