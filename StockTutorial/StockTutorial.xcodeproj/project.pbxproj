@@ -12,6 +12,10 @@
 		6465C69A26D3E1D1005C1C0C /* DateSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C69926D3E1D1005C1C0C /* DateSelectionCell.swift */; };
 		6465C69C26D3E387005C1C0C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C69B26D3E387005C1C0C /* Date+Extension.swift */; };
 		6465C69E26D3EEC2005C1C0C /* DateSelection+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C69D26D3EEC2005C1C0C /* DateSelection+TableView.swift */; };
+		6465C6A026D3F5DB005C1C0C /* DCARepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C69F26D3F5DB005C1C0C /* DCARepository.swift */; };
+		6465C6A226D3F631005C1C0C /* DCARepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C6A126D3F631005C1C0C /* DCARepositoryImpl.swift */; };
+		6465C6A426D3F797005C1C0C /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C6A326D3F797005C1C0C /* Int+Extension.swift */; };
+		6465C6A626D3FA55005C1C0C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465C6A526D3FA55005C1C0C /* Double+Extension.swift */; };
 		648E793526D14BE60061D485 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E793426D14BE60061D485 /* LoadingView.swift */; };
 		648E793726D14DBD0061D485 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E793626D14DBD0061D485 /* Font.swift */; };
 		648E793926D14E760061D485 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E793826D14E760061D485 /* StockCell.swift */; };
@@ -80,6 +84,10 @@
 		6465C69926D3E1D1005C1C0C /* DateSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionCell.swift; sourceTree = "<group>"; };
 		6465C69B26D3E387005C1C0C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		6465C69D26D3EEC2005C1C0C /* DateSelection+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateSelection+TableView.swift"; sourceTree = "<group>"; };
+		6465C69F26D3F5DB005C1C0C /* DCARepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCARepository.swift; sourceTree = "<group>"; };
+		6465C6A126D3F631005C1C0C /* DCARepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCARepositoryImpl.swift; sourceTree = "<group>"; };
+		6465C6A326D3F797005C1C0C /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		6465C6A526D3FA55005C1C0C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		648E793426D14BE60061D485 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		648E793626D14DBD0061D485 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		648E793826D14E760061D485 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
@@ -261,6 +269,8 @@
 			children = (
 				64B45C7A26CEA928001370B5 /* StockRepository.swift */,
 				64B45C7C26CEA938001370B5 /* StockRepositoryImpl.swift */,
+				6465C69F26D3F5DB005C1C0C /* DCARepository.swift */,
+				6465C6A126D3F631005C1C0C /* DCARepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -370,6 +380,8 @@
 				648E793A26D14F8A0061D485 /* View+Extension.swift */,
 				64D1D26726D24E6900D80246 /* UITextField+Extension.swift */,
 				6465C69B26D3E387005C1C0C /* Date+Extension.swift */,
+				6465C6A326D3F797005C1C0C /* Int+Extension.swift */,
+				6465C6A526D3FA55005C1C0C /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -641,13 +653,17 @@
 				64B45C3026CE9C65001370B5 /* AppDelegate.swift in Sources */,
 				64B45C7B26CEA928001370B5 /* StockRepository.swift in Sources */,
 				64B45C7D26CEA938001370B5 /* StockRepositoryImpl.swift in Sources */,
+				6465C6A226D3F631005C1C0C /* DCARepositoryImpl.swift in Sources */,
 				6465C69E26D3EEC2005C1C0C /* DateSelection+TableView.swift in Sources */,
 				6465C69C26D3E387005C1C0C /* Date+Extension.swift in Sources */,
 				64B45C8126CEACCB001370B5 /* StockUseCase.swift in Sources */,
 				64B45C6E26CE9EA1001370B5 /* StockListController.swift in Sources */,
 				64D1D25B26D228F200D80246 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
+				6465C6A626D3FA55005C1C0C /* Double+Extension.swift in Sources */,
 				648E793726D14DBD0061D485 /* Font.swift in Sources */,
 				64D1D25326D218D200D80246 /* StockDetailTopView.swift in Sources */,
+				6465C6A426D3F797005C1C0C /* Int+Extension.swift in Sources */,
+				6465C6A026D3F5DB005C1C0C /* DCARepository.swift in Sources */,
 				64B45C7026CE9EBE001370B5 /* BaseView.swift in Sources */,
 				648E793926D14E760061D485 /* StockCell.swift in Sources */,
 				64D1D25D26D2370C00D80246 /* StockDetailViewModel.swift in Sources */,
