@@ -42,7 +42,7 @@ class StockRepositoryImpl: StockRepository {
     }
     
     
-    func fetchTimeSeriesPublisher(keywords: String) -> AnyPublisher<TimeSeriesMontlyAdjusted, Error> {
+    func fetchTimeSeriesPublisher(keywords: String) -> AnyPublisher<TimeSeriesMonthlyAdjusted, Error> {
         let queryResult = parseQueryString(text: keywords)
         var query: String = ""
         
@@ -61,7 +61,7 @@ class StockRepositoryImpl: StockRepository {
         case .success(let url):
             return URLSession.shared.dataTaskPublisher(for: url)
                 .map{ $0.data }
-                .decode(type: TimeSeriesMontlyAdjusted.self, decoder: decorder)
+                .decode(type: TimeSeriesMonthlyAdjusted.self, decoder: decorder)
                 .receive(on: RunLoop.main).eraseToAnyPublisher()
         }
     }

@@ -9,7 +9,7 @@ import Combine
 
 class StockDetailUseCase {
     
-    func fetchTimeSeriesPublisher(keywords: String) -> AnyPublisher<TimeSeriesMontlyAdjusted, Error> {
+    func fetchTimeSeriesPublisher(keywords: String) -> AnyPublisher<TimeSeriesMonthlyAdjusted, Error> {
         return stockRepositroy.fetchTimeSeriesPublisher(keywords: keywords)
     }
 
