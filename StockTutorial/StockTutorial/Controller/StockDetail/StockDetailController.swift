@@ -23,6 +23,7 @@ final class StockDetailController: BaseViewController, FactoryModule {
         stock = dependency.stock
         viewModel = dependency.viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModel.viewDidLoad(symbol: dependency.stock.symbol ?? "", stock: dependency.stock)
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +62,7 @@ final class StockDetailController: BaseViewController, FactoryModule {
     override func bind() {
         viewModel.$timeSeriresMontlyAdjusted.sink { timeSeriresMontlyAdjusted in
             guard let timeSeriresMontlyAdjusted = timeSeriresMontlyAdjusted else { return }
-            debugPrint("timeSeriresMontlyAdjusted: ", timeSeriresMontlyAdjusted.monthInfos)
+            debugPrint("timeSeriresMontlyAdjusted: ", timeSeriresMontlyAdjusted.series)
         }.store(in: &subscriber)
         
         viewModel.$stock.sink { [unowned self] stock in
@@ -92,8 +93,9 @@ final class StockDetailController: BaseViewController, FactoryModule {
 extension StockDetailController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == selfView.bottomView.dateInputView.textField {
-            
-            coordinator?.dateInputTextFieldTapped()
+            if let timeSeriesMonthlyAdjusted = self.viewModel.timeSeriesMonthlyAdjustedRf {
+                coordinator?.dateInputTextFieldTapped(with: timeSeriesMonthlyAdjusted, monthInfo: viewModel.selectedMonthInfoRF)
+            }
             return false
         }
         return true
