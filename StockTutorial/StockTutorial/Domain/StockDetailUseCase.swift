@@ -6,16 +6,25 @@
 //
 
 import Combine
+import Foundation
 
 class StockDetailUseCase {
     
     func fetchTimeSeriesPublisher(keywords: String) -> AnyPublisher<TimeSeriesMonthlyAdjusted, Error> {
         return stockRepositroy.fetchTimeSeriesPublisher(keywords: keywords)
     }
-
-    private let stockRepositroy: StockRepository
     
-    init(stockRepository: StockRepository) {
+    func calculateDCA(initialInvestmentAmount: Double, monthlyDollarCostAveragingAmount: Double, initialDateOfInvestment: Date) -> DCARepositoryImpl.DCAResult {
+        return dcaRepository.calculate(initialInvestmentAmount: initialInvestmentAmount,
+                                       monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
+                                       initialDateOfInvestment: initialDateOfInvestment)
+    }
+    private let stockRepositroy: StockRepository
+    private let dcaRepository: DCARepository
+    
+    init(stockRepository: StockRepository, dcaRepository: DCARepository) {
         self.stockRepositroy = stockRepository
+        self.dcaRepository = dcaRepository
+
     }
 }

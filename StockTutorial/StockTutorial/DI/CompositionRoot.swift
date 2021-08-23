@@ -14,6 +14,7 @@ extension AppDependency {
     static func resolve() -> AppDependency {
         
         let stockRepository: StockRepository = StockRepositoryImpl()
+        let dcaRepository: DCARepository = DCARepositoryImpl()
         
         // for pure dependency
         let stockListControllerFactory: () -> StockListController = {
@@ -23,7 +24,7 @@ extension AppDependency {
         }
         
         let stockDetailControllerFactory: (Stock) -> StockDetailController = { stock in
-            let usecase : StockDetailUseCase = .init(stockRepository: stockRepository)
+            let usecase : StockDetailUseCase = .init(stockRepository: stockRepository, dcaRepository: dcaRepository)
             let viewModel: StockDetailViewModel = .init(usecase: usecase)
             return .init(dependency: .init(stock: stock, viewModel: viewModel))
         }
