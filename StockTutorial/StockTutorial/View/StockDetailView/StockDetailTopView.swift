@@ -43,16 +43,16 @@ final class StockDetailTopView: BaseView {
                                                              annualReturnLabel,
                                                              annualReturnValueLabel])
         
-        titleLabel.text = "aa"
-        subTitleLabel.text = "bb"
-        currentValueTextLabel.text = "cc"
-        currentValueValueLabel.text = "dd"
+        titleLabel.text = "NO DATA"
+        subTitleLabel.text = "NO DATA"
+        currentValueTextLabel.text = "NO DATA"
+        currentValueValueLabel.text = "NO DATA"
         investmentLabel.text = "Investment"
-        investmetnValueLabel.text = "ff"
+        investmetnValueLabel.text = "NO DATA"
         gainLabel.text = "Gain"
-        gainValueLabel.text = "hhh"
+        gainValueLabel.text = "NO DATA"
         annualReturnLabel.text = "Annual Return"
-        annualReturnValueLabel.text = "jj"
+        annualReturnValueLabel.text = "NO DATA"
                 
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
@@ -86,10 +86,15 @@ final class StockDetailTopView: BaseView {
         annualReturnValueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true 
     }
     
-    func configureUI(stock: Stock) {
+    func configureUI(with dcaResult: DCARepositoryImpl.DCAResult, stock: Stock) {
         titleLabel.text = stock.symbol
         subTitleLabel.text = stock.name
         currentValueTextLabel.text = "Stock Value (\(String(describing: stock.currency ?? "")))"
+        
+        currentValueValueLabel.text = dcaResult.currentValue.stringValue
+        investmetnValueLabel.text = "\(stock.currency ?? "") \(dcaResult.investmentAmount)"
+        gainValueLabel.text = "\(dcaResult.gain) \(dcaResult.yield)"
+        annualReturnValueLabel.text = dcaResult.annualReturn.stringValue
         
     }
 }

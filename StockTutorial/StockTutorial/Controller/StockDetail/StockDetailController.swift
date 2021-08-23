@@ -60,26 +60,54 @@ final class StockDetailController: BaseViewController, FactoryModule {
     }
     
     override func bind() {
-        viewModel.$timeSeriresMontlyAdjusted.sink { timeSeriresMontlyAdjusted in
-            guard let timeSeriresMontlyAdjusted = timeSeriresMontlyAdjusted else { return }
-            debugPrint("timeSeriresMontlyAdjusted: ", timeSeriresMontlyAdjusted.series)
+        
+        //ViewModel - loading
+        viewModel.$loading.sink { loading in
+            self.selfView.loadingView.isHidden = !loading
         }.store(in: &subscriber)
         
+        //ViewModel - stock
         viewModel.$stock.sink { [unowned self] stock in
             guard let stock = stock else { return }
-            self.selfView.topView.configureUI(stock: stock)
+            self.selfView.topView.titleLabel.text = stock.symbol
+            self.selfView.topView.subTitleLabel.text = stock.name
+            
             if let currency = stock.currency {
+                self.selfView.topView.currentValueTextLabel.text = "Current Value (\(currency))"
                 self.selfView.bottomView.configureUI(currency: currency)
             }
         }.store(in: &subscriber)
         
+        //ViewModel - errorMessage
         viewModel.$errorMessage.sink { errorMessage in
             guard let errorMessage = errorMessage else { return }
             debugPrint("Error: ", errorMessage)
         }.store(in: &subscriber)
+    
+        //ViewModel - timeSeriresMontlyAdjusted
+        viewModel.$timeSeriresMontlyAdjusted.sink { timeSeriresMontlyAdjusted in
+            guard let timeSeriresMontlyAdjusted = timeSeriresMontlyAdjusted else { return }
+            self.selfView.bottomView.slider.maximumValue = Float(timeSeriresMontlyAdjusted.series.count)
+        }.store(in: &subscriber)
         
-        viewModel.$loading.sink { loading in
-            self.selfView.loadingView.isHidden = !loading
+        //ViewModel - selectedMonthInfo
+        viewModel.$selectedMonthInfo.sink { monthInfo in
+            guard let monthInfo = monthInfo else { return }
+            self.selfView.bottomView.dateInputView.textField.text = monthInfo.date.MMYYDDFormat
+        }.store(in: &subscriber)
+        
+        //ViewModel - slider
+        viewModel.$sliderIndex.sink { index in
+            guard let index = index else { return }
+            self.selfView.bottomView.slider.value = Float(index)
+        }.store(in: &subscriber)
+        
+        //ViewModel - dcaResult
+        viewModel.$dcaResult.sink { [unowned self] dcaResult in
+            guard let dcaResult = dcaResult,
+                  let stock = viewModel.stockRF else { return }
+            print("thth", dcaResult, stock)
+            self.selfView.topView.configureUI(with: dcaResult, stock: stock)
         }.store(in: &subscriber)
     }
     

@@ -14,6 +14,9 @@ class StockDetailViewModel: BaseViewModel {
     @Published var stock: Stock?
     @Published var selectedMonthInfo: MonthInfo?
     @Published var sliderIndex: Int?
+    @Published var investmentAmount: Int?
+    @Published var monthlyDollarCostAveragingAmount: Int?
+    @Published var dcaResult: DCARepositoryImpl.DCAResult?
     
     var timeSeriesMonthlyAdjustedRf: TimeSeriesMonthlyAdjusted?
     var selectedMonthInfoRF: MonthInfo?
@@ -24,6 +27,7 @@ class StockDetailViewModel: BaseViewModel {
     init(usecase: StockDetailUseCase) {
         self.usecase = usecase
         super.init()
+        bind()
     }
     
     func viewDidLoad(symbol: String, stock: Stock) {
@@ -48,8 +52,36 @@ class StockDetailViewModel: BaseViewModel {
     }
     
     func bind() {
+        $selectedMonthInfo.sink { [unowned self] monthInfo in
+            guard let monthInfo = monthInfo else { return}
+            self.selectedMonthInfoRF = monthInfo
+        }.store(in: &subscriber)
         
+        $sliderIndex.sink { index in
+            guard let index = index else { return }
+            if self.timeSeriesMonthlyAdjustedRf?.series.count ?? 0 > index {
+                if let monthInfo = self.timeSeriesMonthlyAdjustedRf?.series[index] {
+                    self.selectedMonthInfo = monthInfo
+                }
+            }
+        }.store(in: &subscriber)
+        
+        $stock.sink { stock in
+            guard let stock = stock else { return }
+            self.stockRF = stock
+        }.store(in: &subscriber)
+        
+        Publishers.CombineLatest3($selectedMonthInfo, $investmentAmount, $monthlyDollarCostAveragingAmount)
+            .sink { [unowned self] selectedMonthInfo, investmentAmount, monthlyDollarCostAveragingAmount in
+            guard let selectedMonthInfo = selectedMonthInfo,
+                  let investmentAmount = investmentAmount,
+                  let monthlyDollarCostAveragingAmount = monthlyDollarCostAveragingAmount else { return }
+                self.dcaResult = self.usecase.calculateDCA(initialInvestmentAmount: investmentAmount.doubleValue,
+                                                           monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue,
+                                                           initialDateOfInvestment: selectedMonthInfo.date)
+            }.store(in: &subscriber)
     }
+    
    
 }
 
